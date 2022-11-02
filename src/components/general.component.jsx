@@ -3,11 +3,12 @@ import { Component } from "react";
 class General extends Component{
     render() {
 
-        console.log(this.props)
+      const {firstName, lastName, email, phoneNumber}  = this.props.general;
+      console.log(email);
       
           return (
             <form>
-                <label htmlFor="taskInput">Enter task</label>
+                <label htmlFor="taskInput">email</label>
                     <input
                     // onChange={this.handleChange}
                     // value={task.text}
