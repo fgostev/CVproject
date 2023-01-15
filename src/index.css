@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.generalInfo{
+  background-color: rgb(204, 215, 204);
+}
+/* form{
+  color:red;
+} */
