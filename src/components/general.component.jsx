@@ -10,25 +10,22 @@ import { Component } from "react";
 class General extends Component{
 
     render() {
-      const {handleInputChange, handleSubmit, firstName, secondName, email, phoneNumber}  = this.props;
-    
+      const {handleInputChange, handleSubmit, firstName, lastName, email, phoneNumber}  = this.props;
           return (
             <div className="generalInfo">
           <h1>General</h1>
-          <form id="general">
-            <div>
-              <input type="text" className="taskInput" onChange={handleInputChange} name="firstName" value={firstName}/>
-            </div>
-            <div>
-              <input type="text" className="taskInput" onChange={handleInputChange} name="secondName"/>
-              </div>
-              <input type="text" className="taskInput" onChange={handleInputChange} name="email"/>
-              <input type="text" className="taskInput" onChange={handleInputChange} name="email"/>
-              <button type="submit" onClick={handleSubmit} name="phoneNumber">
-                  Submit CV
+            <div className="generalForm">
+            <form id="general" onSubmit={handleSubmit}>
+              <input type="text" className="taskInput general" onChange={handleInputChange} name="firstName" placeholder={firstName}/>
+              <input type="text" className="taskInput general" onChange={handleInputChange} name="lastName" placeholder={lastName}/>
+              <input type="text" className="taskInput general" onChange={handleInputChange} name="email" placeholder={email}/>
+              <input type="text" className="taskInput general" onChange={handleInputChange} name="phoneNumber" placeholder={phoneNumber}/>
+              <button type="submit">
+                  Save
               </button>
-          </form>
+              </form>
             </div>
+          </div>
           );
         }
 }
