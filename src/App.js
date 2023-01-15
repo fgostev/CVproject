@@ -1,24 +1,34 @@
 import {Component} from 'react';
 import DisplayForm from './components/displayForm.component';
 import General from './components/general.component';
+import WorkExp from './components/workExp.component';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
+      // specific object to store further
+     workExperience: {
+      companyName: "",
+      position: "",
+      tasks:"",
+      date:"",
+     },
+      // objects stored
       general: {
         firstName: "",
         lastName: "",
         email: "",
         phoneNumber: ""
-      }
+      },
+      workExperiences: [],
     };
   }
 
   handleInputChange = (e) =>{
-    const typedInput = e.target;
-    console.log(this.state.general.firstName)
+    // const typedInput = e.target;
+    // console.log(this.state.general.firstName)
 
     // this.setState({
     //   general: {
@@ -70,6 +80,9 @@ class App extends Component {
           handleSubmit = {this.handleSubmit} 
           />
         </div>
+        
+        <WorkExp />
+
         <DisplayForm 
           firstName ={firstName}
           lastName = {lastName}
