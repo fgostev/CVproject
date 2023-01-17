@@ -16,10 +16,10 @@ class General extends Component{
           <h1>General</h1>
             <div className="generalForm">
             <form id="general" onSubmit={handleSubmit}>
-              <input type="text" className="taskInput general" onChange={handleInputChange} name="firstName" placeholder={firstName}/>
-              <input type="text" className="taskInput general" onChange={handleInputChange} name="lastName" placeholder={lastName}/>
-              <input type="text" className="taskInput general" onChange={handleInputChange} name="email" placeholder={email}/>
-              <input type="text" className="taskInput general" onChange={handleInputChange} name="phoneNumber" placeholder={phoneNumber}/>
+              <input type="text" className="general" onChange={handleInputChange} value = {firstName} name="firstName" placeholder={firstName}/>
+              <input type="text" className="general" onChange={handleInputChange} value = {lastName} name="lastName" placeholder={lastName}/>
+              <input type="text" className="general" onChange={handleInputChange} value = {email} name="email" placeholder={email}/>
+              <input type="text" className="general" onChange={handleInputChange} value = {phoneNumber} name="phoneNumber" placeholder={phoneNumber}/>
               <button type="submit">
                   Save
               </button>

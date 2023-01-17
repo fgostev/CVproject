@@ -9,7 +9,7 @@ displayForm = () =>{
 
     render() {
 
-        const {handleSubmit, handleInputChange} = this.props;
+        const { handleSubmit, handleInputChange} = this.props;
 
         return(
 

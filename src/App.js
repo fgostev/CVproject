@@ -1,7 +1,7 @@
 import {Component} from 'react';
-import DisplayForm from './components/displayForm.component';
 import General from './components/general.component';
 import WorkExp from './components/workExp.component';
+import DisplayForm from './components/displayForm.component';
 
 class App extends Component {
   constructor() {
@@ -27,12 +27,11 @@ class App extends Component {
     };
 
     this.handleOpen = this.handleOpen.bind(this);
-    // this.handleClose = this.handleClose.bind(this);
 
   }
 
   handleInputChange = (e) =>{
-    console.log(this.state.workExp);
+
     this.setState({
       [e.target.className] : {
         [e.target.name] : e.target.value,
@@ -42,28 +41,28 @@ class App extends Component {
   }
 
 
-  handleSubmitGeneral = (e) => {
-    e.preventDefault();
-    const formElements = Array.from(e.target.elements);
-    let generalValues = [];
+  // handleSubmitGeneral = (e) => {
+  //   e.preventDefault();
+  //   const formElements = Array.from(e.target.elements);
+  //   let generalValues = [];
 
-    formElements.forEach(element=> {
-      if(element.type !== "submit" && element.className.includes("general")){
-        generalValues.push(element.value);
-      }
-    })
+  //   formElements.forEach(element=> {
+  //     if(element.type !== "submit" && element.className.includes("general")){
+  //       generalValues.push(element.value);
+  //     }
+  //   })
 
-    this.setState({
-      general: {
-        firstName: generalValues[0],
-        lastName: generalValues[1],
-        email: generalValues[2],
-        phoneNumber: generalValues[3],
-      }
-    })
+  //   this.setState({
+  //     general: {
+  //       firstName: generalValues[0],
+  //       lastName: generalValues[1],
+  //       email: generalValues[2],
+  //       phoneNumber: generalValues[3],
+  //     }
+  //   })
 
-    // console.log(this.state.workExperience);
-  }
+  //   // console.log(this.state.workExperience);
+  // }
 
   handleOpen = () => {
     this.setState({
