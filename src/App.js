@@ -8,13 +8,8 @@ class App extends Component {
     super();
 
     this.state = {
-      // specific object to store further
-     workExperience: {
-      companyName: "",
-      position: "",
-      tasks:"",
-      date:"",
-     },
+      // modals
+      workModalOpen:false,
       // objects stored
       general: {
         firstName: "",
@@ -22,25 +17,32 @@ class App extends Component {
         email: "",
         phoneNumber: ""
       },
+      workExp: {
+        jobTitle: "",
+        company: "",
+        from: "",
+        end: "",
+      },
       workExperiences: [],
     };
+
+    this.handleOpen = this.handleOpen.bind(this);
+    // this.handleClose = this.handleClose.bind(this);
+
   }
 
   handleInputChange = (e) =>{
-    // const typedInput = e.target;
-    // console.log(this.state.general.firstName)
+    console.log(this.state.workExp);
+    this.setState({
+      [e.target.className] : {
+        [e.target.name] : e.target.value,
+      }
+    })
 
-    // this.setState({
-    //   general: {
-    //     firstName: typedInput.value,
-    //   }
-    // })
-
-    // console.log(typedInput.name);
-    // console.log(this.state)
   }
 
-  handleSubmit = (e) => {
+
+  handleSubmitGeneral = (e) => {
     e.preventDefault();
     const formElements = Array.from(e.target.elements);
     let generalValues = [];
@@ -49,9 +51,7 @@ class App extends Component {
       if(element.type !== "submit" && element.className.includes("general")){
         generalValues.push(element.value);
       }
-      return generalValues;
     })
-
 
     this.setState({
       general: {
@@ -61,11 +61,21 @@ class App extends Component {
         phoneNumber: generalValues[3],
       }
     })
-    console.log(this.state.general);
+
+    // console.log(this.state.workExperience);
   }
 
+  handleOpen = () => {
+    this.setState({
+      workModalOpen: true,
+    })
+    console.log(this.state.workModalOpen);
+  }
+
+
+
   render() {
-  const { firstName, lastName, email, phoneNumber} = this.state.general;
+  const { firstName, lastName, email, phoneNumber, workModalOpen} = this.state.general;
 
     return (
       <div className='App'>
@@ -77,11 +87,26 @@ class App extends Component {
           phoneNumber = {phoneNumber}
           email = {email}
           handleInputChange = {this.handleInputChange} 
-          handleSubmit = {this.handleSubmit} 
+          handleSubmit = {this.handleSubmitGeneral} 
           />
         </div>
-        
-        <WorkExp />
+
+      {!this.state.workModalOpen &&(
+        <div id="workExperienceContainer">
+        <button onClick={this.handleOpen}> Add work experience</button>
+        </div>
+      )
+      }
+
+        {
+          this.state.workModalOpen && (
+            <WorkExp 
+            workModalOpen = {workModalOpen}
+            handleSubmit = {this.handleAddWorkExp}
+            handleInputChange = {this.handleInputChange}
+            />
+          )
+        }
 
         <DisplayForm 
           firstName ={firstName}

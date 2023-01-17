@@ -1,5 +1,6 @@
 import {Component} from "react";
 
+
 class WorkExp extends Component {
 
 displayForm = () =>{
@@ -7,22 +8,25 @@ displayForm = () =>{
 }
 
     render() {
+
+        const {handleSubmit, handleInputChange} = this.props;
+
         return(
-            <div id="workExperienceContainer">
-                <button onClick={this.displayForm}> Add work experience</button>
+
                 <div id="workForm">
-                <form id ="workExperience">
+                <form id ="work" onSubmit={handleSubmit}>
                     <label htmlFor="JobTitle"> Job Title</label>
-                    <input type="text" name="Job Title"></input>
-                    <label htmlFor="Company">Company</label>
-                    <input type="text" name="Company"></input>
-                    <label htmlFor="From">From:</label>
-                    <input type="date" placeholder="from" name="from"></input> 
-                    <label htmlFor="End">End:</label>
-                    <input type="date" placeholder="from" name="End"></input> 
-                   <input type="submit" value="Add"></input>
+                    <input type="text" name="Job Title"  className="workExp" onChange={handleInputChange}></input>
+                    <label htmlFor="company">Company</label>
+                    <input type="text" name="company" className="workExp" onChange={handleInputChange}></input>
+                    <label htmlFor="from">From:</label>
+                    <input type="date" placeholder="from" name="from" className="workExp" onChange={handleInputChange}></input> 
+                    <label htmlFor="end">End:</label>
+                    <input type="date" placeholder="from" name="end" className="workExp" onChange={handleInputChange}></input> 
+                   <input type="submit" value="Add" className="workExp" onChange={handleInputChange}></input>
                 </form>
-                </div>
+        
+            
             </div>
         )
     }  
