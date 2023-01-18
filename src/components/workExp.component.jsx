@@ -2,21 +2,32 @@ import {Component} from "react";
 
 
 class WorkExp extends Component {
+    constructor(){
+        super();
+        this.state = {
+            jobTitle: "",
+            company: "",
+            from: "",
+            end: "",
+        };
+    }
+
+
 
 displayForm = () =>{
-    console.log("Booo!")
 }
 
     render() {
 
-        const { handleSubmit, handleInputChange} = this.props;
+        const { handleSubmit, handleInputChange,
+        jobTitle} = this.props;
 
         return(
 
                 <div id="workForm">
                 <form id ="work" onSubmit={handleSubmit}>
                     <label htmlFor="JobTitle"> Job Title</label>
-                    <input type="text" name="Job Title"  className="workExp" onChange={handleInputChange}></input>
+                    <input type="text" name="jobTitle"  className="workExp" value={jobTitle} onChange={handleInputChange} ></input>
                     <label htmlFor="company">Company</label>
                     <input type="text" name="company" className="workExp" onChange={handleInputChange}></input>
                     <label htmlFor="from">From:</label>

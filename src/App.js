@@ -11,32 +11,23 @@ class App extends Component {
       // modals
       workModalOpen:false,
       // objects stored
-      general: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: ""
-      },
-      workExp: {
-        jobTitle: "",
-        company: "",
-        from: "",
-        end: "",
-      },
-      workExperiences: [],
+      // workExperiences: [],
     };
-
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
 
   }
 
   handleInputChange = (e) =>{
+const target = e.target;
+const value = target.value;
+const name = target.name
 
     this.setState({
-      [e.target.className] : {
-        [e.target.name] : e.target.value,
-      }
+        [name] : value,
     })
+
+    console.log(this.state.jobTitle);
 
   }
 
@@ -68,23 +59,20 @@ class App extends Component {
     this.setState({
       workModalOpen: true,
     })
-    console.log(this.state.workModalOpen);
   }
 
 
 
   render() {
-  const { firstName, lastName, email, phoneNumber, workModalOpen} = this.state.general;
+  const { firstName, lastName, email, phoneNumber, workModalOpen,
+    jobTitle
+} = this.state;
 
     return (
       <div className='App'>
         <div className='container'>
           <h1>CV Generator</h1>
           <General
-          firstName ={firstName}
-          lastName = {lastName}
-          phoneNumber = {phoneNumber}
-          email = {email}
           handleInputChange = {this.handleInputChange} 
           handleSubmit = {this.handleSubmitGeneral} 
           />
@@ -100,8 +88,6 @@ class App extends Component {
         {
           this.state.workModalOpen && (
             <WorkExp 
-            workModalOpen = {workModalOpen}
-            handleSubmit = {this.handleAddWorkExp}
             handleInputChange = {this.handleInputChange}
             />
           )
@@ -112,6 +98,7 @@ class App extends Component {
           lastName = {lastName}
           phoneNumber = {phoneNumber}
           email = {email}
+          jobTitle = {jobTitle}
         />
       </div>
 
