@@ -11,10 +11,13 @@ class App extends Component {
     this.state = {
       // modals
       workModalOpen:false,
+      educations: [],
+      workExperiences: [],
       // objects stored
       // workExperiences: [],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
 
   }
@@ -28,34 +31,47 @@ const name = target.name
         [name] : value,
     })
 
-    console.log(this.state.schoolName);
-    console.log("working")
-
+    console.log(this.state.educations);
+    console.log(this.state.workExperiences);
   }
 
+  // jobTitle: "",
+  // company: "",
+  // from: "",
+  // end: "",
 
-  // handleSubmitGeneral = (e) => {
-  //   e.preventDefault();
-  //   const formElements = Array.from(e.target.elements);
-  //   let generalValues = [];
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const targetName = e.target.id;
+    let newObject = {};
 
-  //   formElements.forEach(element=> {
-  //     if(element.type !== "submit" && element.className.includes("general")){
-  //       generalValues.push(element.value);
-  //     }
-  //   })
+    if(targetName === 'education'){
+      newObject = {
+        schoolName: this.state.schoolName,
+        title: this.state.title,
+        date: this.state.dateOfStudy,
+      }
+      this.setState({
+        educations: this.state.educations.concat(newObject),
+      })
+    } else if(targetName === 'workExperiences'){
+      newObject = {
+        jobTitle: this.state.jobTitle,
+        company: this.state.company,
+        from: this.state.from,
+        end: this.state.end,
+      }      
+      this.setState({
+        workExperiences: this.state.workExperiences.concat(newObject),
+      })
+    }
+    // console.log(Array.from(e.target.elements));
+    // console.log(targetName);
+    // console.log(newArray);
 
-  //   this.setState({
-  //     general: {
-  //       firstName: generalValues[0],
-  //       lastName: generalValues[1],
-  //       email: generalValues[2],
-  //       phoneNumber: generalValues[3],
-  //     }
-  //   })
 
-  //   // console.log(this.state.workExperience);
-  // }
+
+  }
 
   handleOpen = () => {
     this.setState({
@@ -76,12 +92,13 @@ const name = target.name
           <h1>CV Generator</h1>
           <General
           handleInputChange = {this.handleInputChange} 
-          handleSubmit = {this.handleSubmitGeneral} 
+          handleSubmit = {this.handleSubmit} 
           />
         </div>
 
       <Education 
         handleInputChange = {this.handleInputChange}
+        handleSubmit = {this.handleSubmit}
       />
 
       {!this.state.workModalOpen &&(
@@ -95,6 +112,7 @@ const name = target.name
           this.state.workModalOpen && (
             <WorkExp 
             handleInputChange = {this.handleInputChange}
+            handleSubmit = {this.handleSubmit}
             />
           )
         }

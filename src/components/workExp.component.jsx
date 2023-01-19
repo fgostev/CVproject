@@ -9,6 +9,7 @@ class WorkExp extends Component {
             company: "",
             from: "",
             end: "",
+            workExperiences: [],
         };
     }
 
@@ -25,9 +26,9 @@ displayForm = () =>{
         return(
 
                 <div id="workForm">
-                <form id ="work" onSubmit={handleSubmit}>
+                <form id ="workExperiences" onSubmit={handleSubmit}>
                     <label htmlFor="JobTitle"> Job Title</label>
-                    <input type="text" name="jobTitle"  className="workExp" value={jobTitle} onChange={handleInputChange} ></input>
+                    <input type="text" name="jobTitle"  className="workExp" onChange={handleInputChange} value={jobTitle}></input>
                     <label htmlFor="company">Company</label>
                     <input type="text" name="company" className="workExp" onChange={handleInputChange}></input>
                     <label htmlFor="from">From:</label>
@@ -37,7 +38,7 @@ displayForm = () =>{
                    <input type="submit" value="Add" className="workExp" onChange={handleInputChange}></input>
                 </form>
         
-            
+        
             </div>
         )
     }  
