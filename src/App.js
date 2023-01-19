@@ -1,93 +1,116 @@
 import {Component} from 'react';
-import DisplayForm from './components/displayForm.component';
 import General from './components/general.component';
 import WorkExp from './components/workExp.component';
+import DisplayForm from './components/displayForm.component';
+import Education from './components/education.component';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      // specific object to store further
-     workExperience: {
-      companyName: "",
-      position: "",
-      tasks:"",
-      date:"",
-     },
+      // modals
+      workModalOpen:false,
       // objects stored
-      general: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: ""
-      },
-      workExperiences: [],
+      // workExperiences: [],
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+
   }
 
   handleInputChange = (e) =>{
-    // const typedInput = e.target;
-    // console.log(this.state.general.firstName)
-
-    // this.setState({
-    //   general: {
-    //     firstName: typedInput.value,
-    //   }
-    // })
-
-    // console.log(typedInput.name);
-    // console.log(this.state)
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const formElements = Array.from(e.target.elements);
-    let generalValues = [];
-
-    formElements.forEach(element=> {
-      if(element.type !== "submit" && element.className.includes("general")){
-        generalValues.push(element.value);
-      }
-      return generalValues;
-    })
-
+const target = e.target;
+const value = target.value;
+const name = target.name
 
     this.setState({
-      general: {
-        firstName: generalValues[0],
-        lastName: generalValues[1],
-        email: generalValues[2],
-        phoneNumber: generalValues[3],
-      }
+        [name] : value,
     })
-    console.log(this.state.general);
+
+    console.log(this.state.schoolName);
+    console.log("working")
+
   }
 
+
+  // handleSubmitGeneral = (e) => {
+  //   e.preventDefault();
+  //   const formElements = Array.from(e.target.elements);
+  //   let generalValues = [];
+
+  //   formElements.forEach(element=> {
+  //     if(element.type !== "submit" && element.className.includes("general")){
+  //       generalValues.push(element.value);
+  //     }
+  //   })
+
+  //   this.setState({
+  //     general: {
+  //       firstName: generalValues[0],
+  //       lastName: generalValues[1],
+  //       email: generalValues[2],
+  //       phoneNumber: generalValues[3],
+  //     }
+  //   })
+
+  //   // console.log(this.state.workExperience);
+  // }
+
+  handleOpen = () => {
+    this.setState({
+      workModalOpen: true,
+    })
+  }
+
+
+
   render() {
-  const { firstName, lastName, email, phoneNumber} = this.state.general;
+  const { firstName, lastName, email, phoneNumber,
+    schoolName, title, dateOfStudy,
+    jobTitle, company, from, end} = this.state;
 
     return (
       <div className='App'>
         <div className='container'>
           <h1>CV Generator</h1>
           <General
-          firstName ={firstName}
-          lastName = {lastName}
-          phoneNumber = {phoneNumber}
-          email = {email}
           handleInputChange = {this.handleInputChange} 
-          handleSubmit = {this.handleSubmit} 
+          handleSubmit = {this.handleSubmitGeneral} 
           />
         </div>
-        
-        <WorkExp />
+
+      <Education 
+        handleInputChange = {this.handleInputChange}
+      />
+
+      {!this.state.workModalOpen &&(
+        <div id="workExperienceContainer">
+        <button onClick={this.handleOpen}> Add work experience</button>
+        </div>
+      )
+      }
+
+        {
+          this.state.workModalOpen && (
+            <WorkExp 
+            handleInputChange = {this.handleInputChange}
+            />
+          )
+        }
 
         <DisplayForm 
           firstName ={firstName}
           lastName = {lastName}
           phoneNumber = {phoneNumber}
           email = {email}
+          schoolName = {schoolName}
+          title = {title}
+          dateOfStudy = {dateOfStudy}
+          jobTitle = {jobTitle}
+          company = {company}
+          from = {from}
+          end = {end}
         />
       </div>
 
