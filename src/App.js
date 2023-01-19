@@ -2,6 +2,7 @@ import {Component} from 'react';
 import General from './components/general.component';
 import WorkExp from './components/workExp.component';
 import DisplayForm from './components/displayForm.component';
+import Education from './components/education.component';
 
 class App extends Component {
   constructor() {
@@ -27,7 +28,8 @@ const name = target.name
         [name] : value,
     })
 
-    console.log(this.state.jobTitle);
+    console.log(this.state.schoolName);
+    console.log("working")
 
   }
 
@@ -64,9 +66,9 @@ const name = target.name
 
 
   render() {
-  const { firstName, lastName, email, phoneNumber, workModalOpen,
-    jobTitle
-} = this.state;
+  const { firstName, lastName, email, phoneNumber,
+    schoolName, title, dateOfStudy,
+    jobTitle, company, from, end} = this.state;
 
     return (
       <div className='App'>
@@ -77,6 +79,10 @@ const name = target.name
           handleSubmit = {this.handleSubmitGeneral} 
           />
         </div>
+
+      <Education 
+        handleInputChange = {this.handleInputChange}
+      />
 
       {!this.state.workModalOpen &&(
         <div id="workExperienceContainer">
@@ -98,7 +104,13 @@ const name = target.name
           lastName = {lastName}
           phoneNumber = {phoneNumber}
           email = {email}
+          schoolName = {schoolName}
+          title = {title}
+          dateOfStudy = {dateOfStudy}
           jobTitle = {jobTitle}
+          company = {company}
+          from = {from}
+          end = {end}
         />
       </div>
 

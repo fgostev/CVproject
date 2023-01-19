@@ -20,9 +20,19 @@ code {
   background-color: rgb(183, 156, 156);
 }
 
-.displayForm{
-  background-color: rgb(214, 205, 190);
+
+
+
+
+#displayGeneral{
+  background-color: rgb(70, 199, 199);
 }
+
+#displayWork{
+  background-color: rgb(234, 171, 43);
+}
+
+
 /* form{
   color:red;
 } */
