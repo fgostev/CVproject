@@ -1,8 +1,10 @@
 import {Component} from 'react';
 import General from './components/general.component';
-import WorkExp from './components/workExp.component';
-import DisplayForm from './components/displayForm.component';
+import WorkExpForm from './components/workExpForm.component';
+import WorkTask from './components/workTask.component';
+import Preview from './components/preview.component';
 import Education from './components/education.component';
+import EducationTask from './components/educationTask.component';
 
 class App extends Component {
   constructor() {
@@ -11,10 +13,14 @@ class App extends Component {
     this.state = {
       // modals
       workModalOpen:false,
+      general: [],
+      educations: [],
+      workExperiences: [],
       // objects stored
       // workExperiences: [],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
 
   }
@@ -28,34 +34,51 @@ const name = target.name
         [name] : value,
     })
 
-    console.log(this.state.schoolName);
-    console.log("working")
-
+    console.log(this.state.educations);
+    console.log(this.state.workExperiences);
   }
 
+  // jobTitle: "",
+  // company: "",
+  // from: "",
+  // end: "",
 
-  // handleSubmitGeneral = (e) => {
-  //   e.preventDefault();
-  //   const formElements = Array.from(e.target.elements);
-  //   let generalValues = [];
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const targetName = e.target.id;
+    let newObject = {};
 
-  //   formElements.forEach(element=> {
-  //     if(element.type !== "submit" && element.className.includes("general")){
-  //       generalValues.push(element.value);
-  //     }
-  //   })
+    const {schoolName, title, dateOfStudy} = this.state
+    const {jobTitle, company, from, end} = this.state
 
-  //   this.setState({
-  //     general: {
-  //       firstName: generalValues[0],
-  //       lastName: generalValues[1],
-  //       email: generalValues[2],
-  //       phoneNumber: generalValues[3],
-  //     }
-  //   })
 
-  //   // console.log(this.state.workExperience);
-  // }
+    if(targetName === 'educationForm'){
+      newObject = {
+        schoolName: schoolName,
+        title: title,
+        dateOfStudy: dateOfStudy,
+      }
+      this.setState({
+        educations: this.state.educations.concat(newObject),
+      })
+    } else if(targetName === 'workExperiencesForm'){
+      newObject = {
+        jobTitle: jobTitle,
+        company: company,
+        from: from,
+        end: end,
+      }      
+      this.setState({
+        workExperiences: this.state.workExperiences.concat(newObject),
+      })
+    }
+    // console.log(Array.from(e.target.elements));
+    // console.log(targetName);
+    // console.log(newArray);
+
+
+
+  }
 
   handleOpen = () => {
     this.setState({
@@ -67,8 +90,7 @@ const name = target.name
 
   render() {
   const { firstName, lastName, email, phoneNumber,
-    schoolName, title, dateOfStudy,
-    jobTitle, company, from, end} = this.state;
+    educations, workExperiences} = this.state;
 
     return (
       <div className='App'>
@@ -76,12 +98,17 @@ const name = target.name
           <h1>CV Generator</h1>
           <General
           handleInputChange = {this.handleInputChange} 
-          handleSubmit = {this.handleSubmitGeneral} 
+          handleSubmit = {this.handleSubmit} 
           />
         </div>
 
       <Education 
         handleInputChange = {this.handleInputChange}
+        handleSubmit = {this.handleSubmit}
+      />
+
+      <EducationTask 
+        educations = {educations}
       />
 
       {!this.state.workModalOpen &&(
@@ -90,28 +117,27 @@ const name = target.name
         </div>
       )
       }
-
+  
         {
           this.state.workModalOpen && (
-            <WorkExp 
+            <WorkExpForm 
             handleInputChange = {this.handleInputChange}
+            handleSubmit = {this.handleSubmit}
             />
+            
           )
         }
-
-        <DisplayForm 
+        <WorkTask 
+          workExperiences = {workExperiences}
+        />
+        {/* <Preview 
           firstName ={firstName}
           lastName = {lastName}
           phoneNumber = {phoneNumber}
           email = {email}
-          schoolName = {schoolName}
-          title = {title}
-          dateOfStudy = {dateOfStudy}
-          jobTitle = {jobTitle}
-          company = {company}
-          from = {from}
-          end = {end}
-        />
+          educations = {educations}
+          workExperiences = {workExperiences}
+        /> */}
       </div>
 
     );
