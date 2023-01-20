@@ -18,9 +18,9 @@ class Education extends Component{
     return(
       <div className="educationInfo">
 
-        Education!
+        <div>
 
-        <form id="education" onSubmit={handleSubmit}>
+        <form id="educationForm" onSubmit={handleSubmit}>
               <input type="text" className="edu" onChange={handleInputChange} value={schoolName} name="schoolName" />
               <input type="text" className="edu" onChange={handleInputChange} value={title} name="title" />
               <input type="text" className="edu" onChange={handleInputChange} value={dateOfStudy} name="dateOfStudy" />
@@ -28,7 +28,8 @@ class Education extends Component{
                   Submit education
               </button>
               </form>
-
+              
+        </div>
       </div>  
     )
     }

@@ -1,7 +1,7 @@
 import {Component} from "react";
 
 
-class WorkExp extends Component {
+class WorkExpForm extends Component {
     constructor(){
         super();
         this.state = {
@@ -25,8 +25,8 @@ displayForm = () =>{
 
         return(
 
-                <div id="workForm">
-                <form id ="workExperiences" onSubmit={handleSubmit}>
+        <div id="formContainer">
+                <form id ="workExperiencesForm" onSubmit={handleSubmit}>
                     <label htmlFor="JobTitle"> Job Title</label>
                     <input type="text" name="jobTitle"  className="workExp" onChange={handleInputChange} value={jobTitle}></input>
                     <label htmlFor="company">Company</label>
@@ -38,10 +38,9 @@ displayForm = () =>{
                    <input type="submit" value="Add" className="workExp" onChange={handleInputChange}></input>
                 </form>
         
-        
-            </div>
+        </div>
         )
     }  
 }
 
-export default WorkExp;
+export default WorkExpForm;

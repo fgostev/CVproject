@@ -9,6 +9,17 @@ import { Component } from "react";
 
 class General extends Component{
 
+  constructor(){
+    super();
+    this.state= {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+    }
+  }
+
+
     render() {
       const {handleInputChange, handleSubmit, firstName, lastName, email, phoneNumber}  = this.props;
           return (

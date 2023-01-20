@@ -16,7 +16,7 @@ code {
   background-color: rgb(204, 215, 204);
 }
 
-#workForm{
+#workExperiencesForm{
   background-color: rgb(183, 156, 156);
 }
 
@@ -28,7 +28,12 @@ code {
   background-color: rgb(70, 199, 199);
 }
 
-#displayWork{
+.edu{
+  background-color: rgb(159, 133, 81);
+
+}
+
+.experience{
   background-color: rgb(234, 171, 43);
 }
 

@@ -1,8 +1,10 @@
 import {Component} from 'react';
 import General from './components/general.component';
-import WorkExp from './components/workExp.component';
-import DisplayForm from './components/displayForm.component';
+import WorkExpForm from './components/workExpForm.component';
+import WorkTask from './components/workTask.component';
+import Preview from './components/preview.component';
 import Education from './components/education.component';
+import EducationTask from './components/educationTask.component';
 
 class App extends Component {
   constructor() {
@@ -11,6 +13,7 @@ class App extends Component {
     this.state = {
       // modals
       workModalOpen:false,
+      general: [],
       educations: [],
       workExperiences: [],
       // objects stored
@@ -45,21 +48,25 @@ const name = target.name
     const targetName = e.target.id;
     let newObject = {};
 
-    if(targetName === 'education'){
+    const {schoolName, title, dateOfStudy} = this.state
+    const {jobTitle, company, from, end} = this.state
+
+
+    if(targetName === 'educationForm'){
       newObject = {
-        schoolName: this.state.schoolName,
-        title: this.state.title,
-        date: this.state.dateOfStudy,
+        schoolName: schoolName,
+        title: title,
+        dateOfStudy: dateOfStudy,
       }
       this.setState({
         educations: this.state.educations.concat(newObject),
       })
-    } else if(targetName === 'workExperiences'){
+    } else if(targetName === 'workExperiencesForm'){
       newObject = {
-        jobTitle: this.state.jobTitle,
-        company: this.state.company,
-        from: this.state.from,
-        end: this.state.end,
+        jobTitle: jobTitle,
+        company: company,
+        from: from,
+        end: end,
       }      
       this.setState({
         workExperiences: this.state.workExperiences.concat(newObject),
@@ -83,8 +90,7 @@ const name = target.name
 
   render() {
   const { firstName, lastName, email, phoneNumber,
-    schoolName, title, dateOfStudy,
-    jobTitle, company, from, end} = this.state;
+    educations, workExperiences} = this.state;
 
     return (
       <div className='App'>
@@ -101,35 +107,37 @@ const name = target.name
         handleSubmit = {this.handleSubmit}
       />
 
+      <EducationTask 
+        educations = {educations}
+      />
+
       {!this.state.workModalOpen &&(
         <div id="workExperienceContainer">
         <button onClick={this.handleOpen}> Add work experience</button>
         </div>
       )
       }
-
+  
         {
           this.state.workModalOpen && (
-            <WorkExp 
+            <WorkExpForm 
             handleInputChange = {this.handleInputChange}
             handleSubmit = {this.handleSubmit}
             />
+            
           )
         }
-
-        <DisplayForm 
+        <WorkTask 
+          workExperiences = {workExperiences}
+        />
+        {/* <Preview 
           firstName ={firstName}
           lastName = {lastName}
           phoneNumber = {phoneNumber}
           email = {email}
-          schoolName = {schoolName}
-          title = {title}
-          dateOfStudy = {dateOfStudy}
-          jobTitle = {jobTitle}
-          company = {company}
-          from = {from}
-          end = {end}
-        />
+          educations = {educations}
+          workExperiences = {workExperiences}
+        /> */}
       </div>
 
     );
