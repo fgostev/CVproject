@@ -5,6 +5,8 @@ import WorkTask from './components/workTask.component';
 import Preview from './components/preview.component';
 import Education from './components/education.component';
 import EducationTask from './components/educationTask.component';
+import uniqid from 'uniqid';
+
 
 class App extends Component {
   constructor() {
@@ -29,6 +31,8 @@ class App extends Component {
 const target = e.target;
 const value = target.value;
 const name = target.name
+
+console.log(uniqid())
 
     this.setState({
         [name] : value,
