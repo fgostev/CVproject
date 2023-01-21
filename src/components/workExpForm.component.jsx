@@ -5,10 +5,6 @@ class WorkExpForm extends Component {
     constructor(){
         super();
         this.state = {
-            jobTitle: "",
-            company: "",
-            from: "",
-            end: "",
             workExperiences: [],
         };
     }

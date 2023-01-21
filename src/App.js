@@ -15,6 +15,10 @@ class App extends Component {
     this.state = {
       // modals
       workModalOpen:false,
+      jobTitle: "",
+      company: "",
+      from: "",
+      end: "",
       general: [],
       educations: [],
       workExperiences: [],
@@ -24,6 +28,8 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
+    this.delete = this.delete.bind(this);
+
 
   }
 
@@ -42,10 +48,6 @@ console.log(uniqid())
     console.log(this.state.workExperiences);
   }
 
-  // jobTitle: "",
-  // company: "",
-  // from: "",
-  // end: "",
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -61,9 +63,13 @@ console.log(uniqid())
         schoolName: schoolName,
         title: title,
         dateOfStudy: dateOfStudy,
+        id: uniqid(),
       }
       this.setState({
         educations: this.state.educations.concat(newObject),
+        schoolName: "",
+        title:"",
+        dateOfStudy: "",
       })
     } else if(targetName === 'workExperiencesForm'){
       newObject = {
@@ -71,17 +77,15 @@ console.log(uniqid())
         company: company,
         from: from,
         end: end,
+        id: uniqid(),
       }      
       this.setState({
         workExperiences: this.state.workExperiences.concat(newObject),
       })
+
     }
-    // console.log(Array.from(e.target.elements));
-    // console.log(targetName);
-    // console.log(newArray);
 
-
-
+    e.target.reset();
   }
 
   handleOpen = () => {
@@ -89,6 +93,39 @@ console.log(uniqid())
       workModalOpen: true,
     })
   }
+
+  delete = (e) =>{
+
+    const targetId = e.target.id;
+    const targetClass = e.target.className;
+    let workExp = this.state.workExperiences;
+    let edu = this.state.workExperiences;
+    let newArray = [];
+    
+    if(targetClass === 'deleteExp'){
+      workExp.forEach((task => {
+        if(task.id !== targetId) {
+          newArray.push(task);
+        }
+        return newArray;
+      }))
+      this.setState({
+        workExperiences: newArray,
+      })
+    }
+    else if(targetClass === 'deleteEdu'){
+      edu.forEach((task => {
+        if(task.id !== targetId) {
+          newArray.push(task);
+        }
+        return newArray;
+      }))
+      this.setState({
+        educations: newArray,
+      })
+    }
+  }
+
 
 
 
@@ -113,6 +150,7 @@ console.log(uniqid())
 
       <EducationTask 
         educations = {educations}
+        delete = {this.delete}
       />
 
       {!this.state.workModalOpen &&(
@@ -133,6 +171,7 @@ console.log(uniqid())
         }
         <WorkTask 
           workExperiences = {workExperiences}
+          delete = {this.delete}
         />
         {/* <Preview 
           firstName ={firstName}
