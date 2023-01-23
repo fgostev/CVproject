@@ -7,14 +7,25 @@ import Education from './components/education.component';
 import EducationTask from './components/educationTask.component';
 import uniqid from 'uniqid';
 
+import './styles/style.css';
+
 
 class App extends Component {
   constructor() {
     super();
 
+
+
     this.state = {
       // modals
       workModalOpen:false,
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      schoolName:"",
+      title:"",
+      dateOfStudy:"",
       jobTitle: "",
       company: "",
       from: "",
@@ -22,8 +33,6 @@ class App extends Component {
       general: [],
       educations: [],
       workExperiences: [],
-      // objects stored
-      // workExperiences: [],
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -127,10 +136,17 @@ console.log(uniqid())
   }
 
 
-
+  // schoolName:"",
+  // title:"",
+  // dateOfStudy:"",
+  // jobTitle: "",
+  // company: "",
+  // from: "",
+  // end: "",
 
   render() {
-  const { firstName, lastName, email, phoneNumber,
+  const { firstName, lastName, email, phoneNumber, schoolName, title,
+    dateOfStudy,
     educations, workExperiences} = this.state;
 
     return (
@@ -140,12 +156,19 @@ console.log(uniqid())
           <General
           handleInputChange = {this.handleInputChange} 
           handleSubmit = {this.handleSubmit} 
+          firstName = {firstName}
+          lastName = {lastName}
+          email = {email}
+          phoneNumber = {phoneNumber}
           />
         </div>
 
       <Education 
         handleInputChange = {this.handleInputChange}
         handleSubmit = {this.handleSubmit}
+        schoolName = {schoolName}
+        title = {title}
+        dateOfStudy = {dateOfStudy}
       />
 
       <EducationTask 
