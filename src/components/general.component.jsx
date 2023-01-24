@@ -15,20 +15,13 @@ class General extends Component{
       const {handleInputChange, handleSubmit, firstName, lastName, email, phoneNumber}  = this.props;
           return (
             <div className="generalInfo">
-          <h2>Personal Information</h2>
+          {/* <h2>Personal Information</h2> */}
             <div className="generalForm">
             <form id="general" onSubmit={handleSubmit}>
-            <label htmlFor="firstName">First Name:</label>
               <input type="text" className="general" onChange={handleInputChange} value = {firstName} name="firstName" placeholder={firstName}/>
-              <label htmlFor="lastName">Last Name:</label>
               <input type="text" className="general" onChange={handleInputChange} value = {lastName} name="lastName" placeholder={lastName}/>
-              <label htmlFor="email">Email:</label>
               <input type="text" className="general" onChange={handleInputChange} value = {email} name="email" placeholder={email}/>
-              <label htmlFor="phoneNumber">Phone Number:</label>
               <input type="text" className="general" onChange={handleInputChange} value = {phoneNumber} name="phoneNumber" placeholder={phoneNumber}/>
-              <button type="submit">
-                  Save
-              </button>
               </form>
             </div>
           </div>

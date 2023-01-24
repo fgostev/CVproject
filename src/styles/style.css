@@ -11,6 +11,7 @@ body{
     background-color: rgba(0, 0, 0, 0.183);
 }
 
+
 .App{
     display: flex;
     flex-direction: column;
@@ -25,6 +26,17 @@ body{
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.225);
 }
 
+
+h1{
+    color: rgba(14, 31, 71, 0.569);
+}
+
+h2{
+    font-style: italic;
+    color: rgba(1, 17, 17, 0.769);
+
+}
+
 .generalInfo, .educationInfo,
 #formContainer{
     padding: 0 70px 0 70px;
@@ -34,10 +46,33 @@ body{
 #workExperiencesForm{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:end;
+    padding-top: 2%;
+}
+
+#general{
+    padding-top: 7%;
 }
 
 
+#previewBtn{
+    background-color: rgba(134, 200, 129, 0.68);
+    border: none;
+    color: #f2f4f5;
+    font-size: 1.5rem;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-right: 0%;
+    float: right;
+}
+
+#previewBtn:hover{
+    filter: brightness(110%);
+}
+
+#previewBtn:active {
+  transform: translateY(5px);
+}
 
 input {
     border: 1px solid rgba(78, 78, 78, 0.429);
@@ -45,6 +80,17 @@ input {
     font-size: 1rem;
     padding: 7px;
     margin: 3px;
+}
+
+.general{
+    border: none;
+    font-size: 2rem;
+    font-style: italic;
+    color: #2f303177;
+}
+
+.general:hover{
+    filter: brightness(80%)
 }
 
 button{
@@ -57,37 +103,64 @@ button{
     font-weight: 600px;
     border-radius: 4px;
     cursor: pointer;
-    width: 100px;
+    /* width: 100px; */
 }
 
-/* 
-.generalInfo{
-    background-color: rgb(204, 215, 204);
+button[type='submit']{
+        width: 100px;
+        margin-left: auto;
+        margin-top: 10px;
+}
+
+button[type='submit']:hover{
+    filter: brightness(110%);
+}
+
+button[type='submit']:active {
+  transform: translateY(5px);
+}
+
+
+.experience, .educationCon{
+    color: rgba(6, 6, 6, 0.8);
+    background-color: #3e5d7939;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 70px 15px 70px;
+    margin: 50px;
+    border-radius: 20px;
+}
+
+
+.experience:hover, .educationCon::hover {
+    background-color: rgb(126, 74, 65);
+    color: whitesmoke;
   }
-  
-  #workExperiencesForm{
-    background-color: rgb(183, 156, 156);
-  }
-  
-  
-  
-  
-  
-  #displayGeneral{
-    background-color: rgb(70, 199, 199);
-  }
-  
-  .edu{
-    background-color: rgb(159, 133, 81);
-  
-  }
-  
-  .experience{
-    background-color: rgb(234, 171, 43);
-  }
-   */
-  
-  /* form{
-    color:red;
-  } */
-  
+
+.displayLine{
+    display: flex;
+}
+
+.titlesBold{
+    font-weight: 600;
+    font-size: larger;
+    font-style: italic;
+    text-align: start;
+}
+
+p{
+    text-align: end;
+}
+
+.deleteEdu, .deleteExp{
+    color:rgba(194, 6, 6, 0.723);
+    background: none;
+    align-self: flex-end;
+    margin-right: -52px;
+    margin-top: 0;
+}
+
+.deleteEdu:hover, .deleteExp:hover{
+    filter: brightness(60%);
+}

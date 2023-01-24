@@ -6,7 +6,6 @@ import Preview from './components/preview.component';
 import Education from './components/education.component';
 import EducationTask from './components/educationTask.component';
 import uniqid from 'uniqid';
-
 import './styles/style.css';
 
 
@@ -19,10 +18,10 @@ class App extends Component {
     this.state = {
       // modals
       workModalOpen:false,
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNumber: "",
+      firstName: "First Name",
+      lastName: "Last Name",
+      email: "Email",
+      phoneNumber: "Phone Number" ,
       schoolName:"",
       title:"",
       dateOfStudy:"",
@@ -152,7 +151,9 @@ console.log(uniqid())
     return (
       <div className='App'>
         <div className='container'>
-          <h1>CV Generator</h1>
+  
+          <button id="previewBtn">Preview</button>
+
           <General
           handleInputChange = {this.handleInputChange} 
           handleSubmit = {this.handleSubmit} 
@@ -176,26 +177,18 @@ console.log(uniqid())
         delete = {this.delete}
       />
 
-      {!this.state.workModalOpen &&(
-        <div id="workExperienceContainer">
-        <button onClick={this.handleOpen}> Add work experience</button>
-        </div>
-      )
-      }
-  
-        {
-          this.state.workModalOpen && (
+
             <WorkExpForm 
             handleInputChange = {this.handleInputChange}
             handleSubmit = {this.handleSubmit}
             />
             
-          )
-        }
+
         <WorkTask 
           workExperiences = {workExperiences}
           delete = {this.delete}
         />
+
         {/* <Preview 
           firstName ={firstName}
           lastName = {lastName}
