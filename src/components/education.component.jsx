@@ -14,11 +14,11 @@ class Education extends Component{
 
         <form id="educationForm" onSubmit={handleSubmit}>
             <label htmlFor="School Name:">School Name:</label>
-              <input type="text" className="edu" onChange={handleInputChange} value={schoolName} name="schoolName" />
+              <input required type="text" className="edu" onChange={handleInputChange} value={schoolName} name="schoolName" />
             <label htmlFor="title:"> Title:</label>
-              <input type="text" className="edu" onChange={handleInputChange} value={title} name="title" />
+              <input required type="text" className="edu" onChange={handleInputChange} value={title} name="title" />
             <label htmlFor="dateOfStudy:"> Date Of Study:</label>
-              <input type="text" className="edu" onChange={handleInputChange} value={dateOfStudy} name="dateOfStudy" />
+              <input required type="text" className="edu" onChange={handleInputChange} value={dateOfStudy} name="dateOfStudy" />
               <button type="submit">
                   Add
               </button>

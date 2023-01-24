@@ -12,13 +12,11 @@ body{
 }
 
 
-.App{
+.editCv{
     display: flex;
     flex-direction: column;
     width: 75%;
     margin:  50px auto;
-    /* margin-bottom: 50px;
-    margin-top: 50px; */
     padding-bottom: 50px;
     padding: 20px;
     background-color: #fff;
@@ -26,6 +24,17 @@ body{
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.225);
 }
 
+.displayCv{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin:  50px auto;
+    padding-bottom: 50px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px; 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.225);
+}
 
 h1{
     color: rgba(14, 31, 71, 0.569);
@@ -34,6 +43,7 @@ h1{
 h2{
     font-style: italic;
     color: rgba(1, 17, 17, 0.769);
+    font-size: 2.4rem;
 
 }
 
@@ -42,11 +52,19 @@ h2{
     padding: 0 70px 0 70px;
 }
 
+.generalInfo{
+    padding-top: 4%;
+    padding-left: 50px
+}
+
+label{
+    font-size: 1.2rem;
+}
+
 #general, #educationForm,
 #workExperiencesForm{
     display: flex;
     flex-direction: column;
-    justify-content:end;
     padding-top: 2%;
 }
 
@@ -55,7 +73,7 @@ h2{
 }
 
 
-#previewBtn{
+#previewBtn, #editBtn{
     background-color: rgba(134, 200, 129, 0.68);
     border: none;
     color: #f2f4f5;
@@ -66,11 +84,17 @@ h2{
     float: right;
 }
 
-#previewBtn:hover{
+#editBtn{
+    margin-left: 80%;
+    width: 120px;
+    float: right;
+}
+
+#previewBtn:hover, #editBtn:hover{
     filter: brightness(110%);
 }
 
-#previewBtn:active {
+#previewBtn:active,  #editBtn:active{
   transform: translateY(5px);
 }
 
@@ -130,6 +154,7 @@ button[type='submit']:active {
     padding: 15px 70px 15px 70px;
     margin: 50px;
     border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.225);
 }
 
 
@@ -149,9 +174,13 @@ button[type='submit']:active {
     text-align: start;
 }
 
-p{
-    text-align: end;
+.descriptiveP{
+    align-self: flex-end;
+    font-family: helvetica;
+    color: #6c757d;
+    font-size: 1.4rem;
 }
+
 
 .deleteEdu, .deleteExp{
     color:rgba(194, 6, 6, 0.723);

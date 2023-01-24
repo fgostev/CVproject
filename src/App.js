@@ -17,7 +17,7 @@ class App extends Component {
 
     this.state = {
       // modals
-      workModalOpen:false,
+      previewOn: false,
       firstName: "First Name",
       lastName: "Last Name",
       email: "Email",
@@ -35,7 +35,8 @@ class App extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
+    this.handlePreviewOn = this.handlePreviewOn.bind(this);
+    this.handlePreviewOff = this.handlePreviewOff.bind(this);
     this.delete = this.delete.bind(this);
 
 
@@ -96,9 +97,15 @@ console.log(uniqid())
     e.target.reset();
   }
 
-  handleOpen = () => {
+  handlePreviewOn = () => {
     this.setState({
-      workModalOpen: true,
+      previewOn: true,
+    })
+  }
+
+  handlePreviewOff = () => {
+    this.setState({
+      previewOn: false,
     })
   }
 
@@ -146,15 +153,19 @@ console.log(uniqid())
   render() {
   const { firstName, lastName, email, phoneNumber, schoolName, title,
     dateOfStudy,
-    educations, workExperiences} = this.state;
+    educations, workExperiences, 
+   previewOn} = this.state;
 
     return (
       <div className='App'>
+      
+      {!previewOn &&
+        <div className='editCv'>
         <div className='container'>
   
-          <button id="previewBtn">Preview</button>
+          <button id="previewBtn" onClick={this.handlePreviewOn}>Preview</button>
 
-          <General
+        <General
           handleInputChange = {this.handleInputChange} 
           handleSubmit = {this.handleSubmit} 
           firstName = {firstName}
@@ -188,17 +199,28 @@ console.log(uniqid())
           workExperiences = {workExperiences}
           delete = {this.delete}
         />
+      </div>
+      }
 
-        {/* <Preview 
+      {/* don't forget here to add if condition for preview */}
+
+      {previewOn && <div className='displayCv'>
+      <div>
+      <button id="editBtn" onClick={this.handlePreviewOff}>Edit</button>
+       </div>
+    <Preview 
           firstName ={firstName}
           lastName = {lastName}
-          phoneNumber = {phoneNumber}
           email = {email}
+          phoneNumber = {phoneNumber}
           educations = {educations}
           workExperiences = {workExperiences}
-        /> */}
+          delete = {this.delete}
+          />
+    
       </div>
-
+      }
+      </div>
     );
   }
 }
