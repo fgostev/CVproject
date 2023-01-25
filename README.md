@@ -1,5 +1,5 @@
-Missing features:
+CV generator project.
 
--Able to delete for workExp and Edu
--Preview button - wich is the same as the display
--Styling
+Created with react class component.
+
+Live @https://fgostev.github.io/CVproject
