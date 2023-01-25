@@ -11,7 +11,7 @@ class WorkTask extends Component {
                 <button onClick={this.props.delete} className="deleteExp" id={experience.id}>X</button>
                 <p className='titlesBold'>Job Title:</p> <p  className='descriptiveP'>{experience.jobTitle}</p>
                 <p className='titlesBold'>Company:</p> <p className='descriptiveP'>{experience.company}</p>
-                <p className='titlesBold'>From: </p> <p className='descriptiveP'>{experience.from}</p>
+                <p className='titlesBold'>From: {experience.from}</p> <p className='descriptiveP'>{experience.from}</p>
                 <p className='titlesBold'>End:</p>  <p className='descriptiveP'>{experience.end}</p>
                 </div>               
             })} 

@@ -1,12 +1,8 @@
 import {Component} from 'react';
-import General from './components/general.component';
-import WorkExpForm from './components/workExpForm.component';
-import WorkTask from './components/workTask.component';
 import Preview from './components/preview.component';
-import Education from './components/education.component';
-import EducationTask from './components/educationTask.component';
 import uniqid from 'uniqid';
 import './styles/style.css';
+import EditCv from './components/editCv.component';
 
 
 class App extends Component {
@@ -52,9 +48,6 @@ console.log(uniqid())
     this.setState({
         [name] : value,
     })
-
-    console.log(this.state.educations);
-    console.log(this.state.workExperiences);
   }
 
 
@@ -141,73 +134,29 @@ console.log(uniqid())
     }
   }
 
-
-  // schoolName:"",
-  // title:"",
-  // dateOfStudy:"",
-  // jobTitle: "",
-  // company: "",
-  // from: "",
-  // end: "",
-
   render() {
-  const { firstName, lastName, email, phoneNumber, schoolName, title,
-    dateOfStudy,
-    educations, workExperiences, 
-   previewOn} = this.state;
+  const { firstName, lastName, email, phoneNumber, educations, workExperiences, previewOn} = this.state;
 
     return (
       <div className='App'>
       
       {!previewOn &&
-        <div className='editCv'>
-        <div className='container'>
-  
-          <button id="previewBtn" onClick={this.handlePreviewOn}>Preview</button>
-
-        <General
-          handleInputChange = {this.handleInputChange} 
-          handleSubmit = {this.handleSubmit} 
+        <EditCv
+          deleteTask = {this.delete}
           firstName = {firstName}
           lastName = {lastName}
           email = {email}
           phoneNumber = {phoneNumber}
-          />
-        </div>
-
-      <Education 
-        handleInputChange = {this.handleInputChange}
-        handleSubmit = {this.handleSubmit}
-        schoolName = {schoolName}
-        title = {title}
-        dateOfStudy = {dateOfStudy}
-      />
-
-      <EducationTask 
-        educations = {educations}
-        delete = {this.delete}
-      />
-
-
-            <WorkExpForm 
-            handleInputChange = {this.handleInputChange}
-            handleSubmit = {this.handleSubmit}
-            />
-            
-
-        <WorkTask 
+          educations = {educations}
           workExperiences = {workExperiences}
-          delete = {this.delete}
+          handleInputChange = {this.handleInputChange}
+          handleSubmit = {this.handleSubmit}
+          handlePreviewOn = {this.handlePreviewOn}
         />
-      </div>
       }
 
-      {/* don't forget here to add if condition for preview */}
 
-      {previewOn && <div className='displayCv'>
-      <div>
-      <button id="editBtn" onClick={this.handlePreviewOff}>Edit</button>
-       </div>
+      {previewOn && 
     <Preview 
           firstName ={firstName}
           lastName = {lastName}
@@ -215,10 +164,8 @@ console.log(uniqid())
           phoneNumber = {phoneNumber}
           educations = {educations}
           workExperiences = {workExperiences}
-          delete = {this.delete}
+          handlePreviewOff = {this.handlePreviewOff}
           />
-    
-      </div>
       }
       </div>
     );

@@ -5,9 +5,15 @@ class Preview extends Component{
 
     render(){
     const {firstName, lastName, email, phoneNumber,
-    educations, workExperiences}  = this.props;
+    educations, workExperiences, handlePreviewOff}  = this.props;
 
     return(
+
+    <div className='displayCv'>
+      <div>
+        <button id="editBtn" onClick={handlePreviewOff}>Edit</button>
+       </div>
+       
         <div className="displayPreview">
         <div id='displayGeneral' className='generalInfo general'>
             <p className='generalP'> {firstName}</p>
@@ -48,7 +54,7 @@ class Preview extends Component{
 
       </div>
         
-
+</div>
         )
     }
 }
