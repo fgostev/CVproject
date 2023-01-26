@@ -10,10 +10,10 @@ class General extends Component{
             <div className="generalInfo">
             <div className="generalForm">
             <form id="general" onSubmit={handleSubmit}>
-              <input type="text" className="general" onChange={handleInputChange} value = {firstName} name="firstName" placeholder={firstName}/>
-              <input type="text" className="general" onChange={handleInputChange} value = {lastName} name="lastName" placeholder={lastName}/>
-              <input type="text" className="general" onChange={handleInputChange} value = {email} name="email" placeholder={email}/>
-              <input type="text" className="general" onChange={handleInputChange} value = {phoneNumber} name="phoneNumber" placeholder={phoneNumber}/>
+              <input type="text" className="general" onChange={handleInputChange} value = {firstName} name="firstName" placeholder="First Name"/>
+              <input type="text" className="general" onChange={handleInputChange} value = {lastName} name="lastName" placeholder="Last Name"/>
+              <input type="text" className="general" onChange={handleInputChange} value = {email} name="email" placeholder="Email"/>
+              <input type="text" className="general" onChange={handleInputChange} value = {phoneNumber} name="phoneNumber" placeholder="Phone Number"/>
               </form>
             </div>
           </div>
