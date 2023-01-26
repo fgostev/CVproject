@@ -14,10 +14,10 @@ class App extends Component {
     this.state = {
       // modals
       previewOn: false,
-      firstName: "First Name",
-      lastName: "Last Name",
-      email: "Email",
-      phoneNumber: "Phone Number" ,
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "" ,
       schoolName:"",
       title:"",
       dateOfStudy:"",
