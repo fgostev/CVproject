@@ -38,7 +38,7 @@ class EditCv extends Component{
 
       <EducationTask 
         educations = {educations}
-        delete = {deleteTask}
+        deleteTask = {deleteTask}
       />
 
 
@@ -50,7 +50,7 @@ class EditCv extends Component{
 
         <WorkTask 
           workExperiences = {workExperiences}
-          delete = {deleteTask}
+          deleteTask = {deleteTask}
         />
       </div>
     )

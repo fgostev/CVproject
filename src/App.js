@@ -1,15 +1,20 @@
-import {Component} from 'react';
+import {useState} from 'react';
 import Preview from './components/preview.component';
 import uniqid from 'uniqid';
 import './styles/style.css';
 import EditCv from './components/editCv.component';
+import { Component } from 'react';
+
+// const App = () => {
+//   return(
+//     <div> test!</div>
+//   )
+// }
 
 
 class App extends Component {
   constructor() {
     super();
-
-
 
     this.state = {
       // modals
@@ -33,7 +38,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePreviewOn = this.handlePreviewOn.bind(this);
     this.handlePreviewOff = this.handlePreviewOff.bind(this);
-    this.delete = this.delete.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
 
 
   }
@@ -102,7 +107,9 @@ console.log(uniqid())
     })
   }
 
-  delete = (e) =>{
+  deleteTask = (e) =>{
+    
+    console.log("BOOO!")
 
     const targetId = e.target.id;
     const targetClass = e.target.className;
@@ -142,7 +149,7 @@ console.log(uniqid())
       
       {!previewOn &&
         <EditCv
-          deleteTask = {this.delete}
+          deleteTask = {this.deleteTask}
           firstName = {firstName}
           lastName = {lastName}
           email = {email}
